@@ -1,3 +1,17 @@
+# Observação sobre os testes
+
+Durante a execução dos testes no BrowserStack, não consegui enviar nem uma versão mais antiga do `native-demo-app` com o arquivo `.ipa` para validar os locators do iOS. Diante dessa limitação, pesquisei uma solução alternativa e encontrei a estratégia de locators para aplicativos nativos no repositório [Locator strategy for native apps](https://github.com/webdriverio/appium-boilerplate).
+
+Essa estratégia foi aplicada ao código de testes, pois não foi possível simular o iOS diretamente. O trecho de código abaixo exemplifica como a estratégia foi utilizada para gerenciar os locators dependendo da plataforma:
+
+```javascript
+const SELECTORS = {
+    WEB_VIEW_SCREEN: browser.isAndroid
+        ? '*//android.webkit.WebView'
+        : '*//XCUIElementTypeWebView',
+};
+
+
 # Projeto de Testes de UI e Funcionais para Aplicativos Móveis
 
 Este projeto utiliza o WebDriverIO para testes automatizados de UI e funcionalidades para aplicativos móveis Android e iOS, com integração ao BrowserStack para execução em dispositivos reais na nuvem, além de execução local com Appium.
