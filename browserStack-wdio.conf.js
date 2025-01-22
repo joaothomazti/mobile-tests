@@ -10,7 +10,7 @@ exports.config = {
             platformName: "Android",
             "platformVersion": "12.0",
             "deviceName": "Samsung Galaxy S22 Ultra",
-            "app": "bs://404abb9891cab06da5cb9eb1f919cf46344120c1", // Substitua <APP_ID> pelo ID do app Android no BrowserStack
+            "app": "bs://<APP_ID>", // Substitua <APP_ID> pelo ID do app Android no BrowserStack
             "automationName": "UiAutomator2",
         },
         {

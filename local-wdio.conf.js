@@ -10,14 +10,14 @@ exports.config = {
         platformName: "Android",
         "appium:platformVersion": "15.0",
         "appium:deviceName": "TesteCell",
-        "appium:app": "./app/android.wdio.native.app.v1.0.8.apk",
+        "appium:app": "./path/to/native-demo-app.apk", //Substitua pelo path do seu apk
         "appium:automationName": "UiAutomator2",
     },
     {
         platformName: "iOS",
         "appium:platformVersion": "16.0",
         "appium:deviceName": "iPhone 14",
-        "appium:app": "./app/wdiodemoapp.app",
+        "appium:app": "./path/to/native-demo-app.app", //Substitua pelo path do seu app ios
         "appium:automationName": "XCUITest",
         "appium:noReset": true, 
         "appium:wdaLaunchTimeout": 60000,
