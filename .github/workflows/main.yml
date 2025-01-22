@@ -1,0 +1,60 @@
+name: Android & iOS CI
+
+on:
+  push:
+    branches: 
+      - "main"
+  pull_request:
+    branches: 
+      - "main"
+
+jobs:
+  build:
+
+    runs-on: ubuntu-22.04
+
+    steps:
+
+    # Faz checkout do código no repositório
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # Lista arquivos do repositório para verificar estrutura
+    - name: List repository files
+      run: ls -R
+
+    # Configura JDK para Gradle
+    - name: Set up JDK 11
+      uses: actions/setup-java@v4
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: gradle
+
+    # Permissão para executar gradlew
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    # Instala Node.js para os testes WebDriverIO
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '22'
+
+    # Instala dependências do WebDriverIO
+    - name: Install dependencies
+      run: npm install
+
+    # Define variáveis de ambiente para BrowserStack
+    - name: Set BrowserStack credentials
+      run: |
+        export BROWSERSTACK_USERNAME=${{ secrets.BROWSERSTACK_USERNAME }}
+        export BROWSERSTACK_ACCESS_KEY=${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+
+    # Executa o build com Gradle
+    - name: Build Android App
+      run: ./gradlew build --stacktrace
+
+    # Executa os testes WebDriverIO
+    - name: Run WebDriverIO Tests
+      run: npx wdio run ./browserStack-wdio.conf
