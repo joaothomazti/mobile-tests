@@ -67,6 +67,7 @@ jobs:
 
       - name: Wait for emulator to boot
         run: |
+          adb devices
           adb wait-for-device
           echo "Device detected. Waiting for it to boot..."
           boot_completed=false
