@@ -10,7 +10,7 @@ const SELECTORS = {
         ? '*//android.webkit.WebView'
         : '*//XCUIElementTypeWebView',
 };
-
+```
 
 # Projeto de Testes de UI e Funcionais para Aplicativos Móveis
 
