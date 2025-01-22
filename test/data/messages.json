@@ -1,0 +1,29 @@
+{
+  "form": {
+    "input": {
+      "text": "teste Ok"
+    },
+    "switch": {
+      "on": "Click to turn the switch ON",
+      "off": "Click to turn the switch OFF"
+    },
+    "button": {
+      "activeMessage": "This button is active",
+      "inactiveButtonVisible": "O botão inativo está visível.",
+      "inactiveButtonDisabled": "O botão inativo não está clicável."
+    }
+  },
+  "auth": {
+    "login": {
+      "success": "You are logged in!",
+      "emailError": "Please enter a valid email address",
+      "passwordError": "Please enter at least 8 characters"
+    },
+    "signUp": {
+      "success": "You successfully signed up!",
+      "emailError": "Please enter a valid email address",
+      "passwordError": "Please enter at least 8 characters",
+      "confirmPasswordError": "Please enter the same password"
+    }
+  }
+}
