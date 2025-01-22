@@ -9,8 +9,8 @@ exports.config = {
     capabilities: [{
         platformName: "Android",
         "appium:platformVersion": "15.0",
-        "appium:deviceName": "TesteCell",
-        "appium:app": "./apps/native-demo-app.apk", //Substitua pelo path do seu apk
+        "appium:deviceName": "TestEmulator",
+        "appium:app": "./apps/android.wdio.native.app.v1.0.8.apk", //Substitua pelo path do seu apk
         "appium:automationName": "UiAutomator2",
     },
     // {
