@@ -1,3 +1,5 @@
+image: node:20
+
 stages:
   - test
 
@@ -5,18 +7,23 @@ variables:
   BROWSERSTACK_USERNAME: $BROWSERSTACK_USERNAME
   BROWSERSTACK_ACCESS_KEY: $BROWSERSTACK_ACCESS_KEY
 
-test:
+before_script:
+  - npm install
+
+local_tests:
   stage: test
-  image: node:latest 
-  before_script:
-    - npm install # Instalar dependências
   script:
-    - npm run wdio:browser # Comando para executar os testes com o BrowserStack
+    - npx wdio run local-wdio.conf.js
   artifacts:
-    when: always
-    reports:
-      junit: test-results/*.xml # Armazenar resultados de testes em formato JUnit
     paths:
-      - allure-results # Caso queira armazenar os resultados do Allure (se configurado)
-  only:
-    - merge_requests # Garantir que a execução de testes seja feita apenas em MR e commits
+      - allure-results
+      - screenshots/*
+
+browserstack_tests:
+  stage: test
+  script:
+    - npx wdio run browserStack-wdio.conf.js
+  artifacts:
+    paths:
+      - allure-results
+      - screenshots/*
