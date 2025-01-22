@@ -40,5 +40,23 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Set up Android SDK
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y openjdk-11-jdk
+          mkdir -p /usr/local/lib/android/sdk
+          curl -o android-sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
+          unzip android-sdk.zip -d /usr/local/lib/android/sdk/cmdline-tools
+          mv /usr/local/lib/android/sdk/cmdline-tools/cmdline-tools /usr/local/lib/android/sdk/cmdline-tools/latest
+          yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/usr/local/lib/android/sdk --licenses
+          /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/usr/local/lib/android/sdk "platform-tools" "build-tools;35.0.0"
+      - name: Add Android tools to PATH
+        run: echo "::add-path::/usr/local/lib/android/sdk/platform-tools"
+
+      - name: Set environment variables
+        run: |
+          echo "ANDROID_HOME=/usr/local/lib/android/sdk" >> $GITHUB_ENV
+          echo "PATH=/usr/local/lib/android/sdk/platform-tools:/usr/local/lib/android/sdk/build-tools/35.0.0:$PATH" >> $GITHUB_ENV
+
       - name: Run tests
         run: npx wdio local-wdio.conf.js # Substitua com o comando para rodar seus testes
