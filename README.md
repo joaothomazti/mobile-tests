@@ -39,8 +39,8 @@ Antes de rodar os testes, certifique-se de ter as seguintes ferramentas instalad
 
 1. Clone este repositório:
    ```bash
-   git clone <url_do_repositorio>
-   cd <diretorio_do_repositorio>
+   git clone https://github.com/joaothomazti/mobile-tests.git
+   cd https://github.com/joaothomazti/mobile-tests.git
    ```
 
 ## Instalação e Configuração
