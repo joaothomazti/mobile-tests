@@ -65,16 +65,6 @@ jobs:
           echo "no" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/avdmanager create avd -n TestEmulator -k "system-images;android-30;google_apis;x86_64" --force
           nohup /usr/local/lib/android/sdk/emulator/emulator -avd TestEmulator -no-audio -no-window &
 
-      - name: Wait for emulator to boot
-        run: |
-          adb wait-for-device
-          boot_completed=false
-          while [ "$boot_completed" != "1" ]; do
-            sleep 5
-            boot_completed=$(adb shell getprop sys.boot_completed | tr -d '\r')
-            echo "Waiting for emulator to boot..."
-          done
-          echo "Emulator booted successfully!"
 
       - name: Run tests
         run: npx wdio local-wdio.conf.js # Substitua com o comando para rodar seus testes
