@@ -23,7 +23,7 @@ describe('Testes de Login de Usuário', () => {
         it(`Deve exibir erro ao informar apenas o e-mail: ${user.email} e deixar a senha vazia`, async () => {
             await AuthPage.login(user.email, '');
 
-            const isPasswordError = await AuthPagdfe.validatefdErrorMessage(AuthPage.passwordErrorMessage, messages.auth.login.passwordError)
+            const isPasswordError = await AuthPage.validateErrorMessage(AuthPage.passwordErrorMessage, messages.auth.login.passwordError)
             expect(isPasswordError).to.be.true;
         })
 
