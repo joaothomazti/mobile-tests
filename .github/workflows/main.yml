@@ -64,6 +64,7 @@ jobs:
         run: |
           echo "no" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/avdmanager create avd -n TestEmulator -k "system-images;android-30;google_apis;x86_64" --force
           nohup /usr/local/lib/android/sdk/emulator/emulator -avd TestEmulator -no-audio -no-window &
+          /usr/local/lib/android/sdk/cmdline-tools/latest/bin/avdmanager list avd
 
       - name: Wait for emulator to boot
         run: |
