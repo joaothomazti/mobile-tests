@@ -10,18 +10,18 @@ exports.config = {
         platformName: "Android",
         "appium:platformVersion": "15.0",
         "appium:deviceName": "TesteCell",
-        "appium:app": "./path/to/native-demo-app.apk", //Substitua pelo path do seu apk
+        "appium:app": "./apps/native-demo-app.apk", //Substitua pelo path do seu apk
         "appium:automationName": "UiAutomator2",
     },
-    {
-        platformName: "iOS",
-        "appium:platformVersion": "16.0",
-        "appium:deviceName": "iPhone 14",
-        "appium:app": "./path/to/native-demo-app.app", //Substitua pelo path do seu app ios
-        "appium:automationName": "XCUITest",
-        "appium:noReset": true, 
-        "appium:wdaLaunchTimeout": 60000,
-    }
+    // {
+    //     platformName: "iOS",
+    //     "appium:platformVersion": "16.0",
+    //     "appium:deviceName": "iPhone 14",
+    //     "appium:app": "./path/to/native-demo-app.app", //Substitua pelo path do seu app ios
+    //     "appium:automationName": "XCUITest",
+    //     "appium:noReset": true, 
+    //     "appium:wdaLaunchTimeout": 60000,
+    // }
 ],
     logLevel: 'info',
     bail: 0,
