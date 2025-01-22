@@ -59,6 +59,16 @@ jobs:
       - name: Set environment variables
         run: |
           echo "ANDROID_HOME=/usr/local/lib/android/sdk" >> $GITHUB_ENV
+          
+      - name: Create and start emulator
+        run: |
+          /usr/local/lib/android/sdk/cmdline-tools/latest/bin/avdmanager create avd -n TestEmulator -k "system-images;android-30;default;x86_64" --force
+          nohup /usr/local/lib/android/sdk/emulator/emulator -avd TestEmulator -no-audio -no-window &
+
+      - name: Wait for emulator to boot
+        run: |
+          adb wait-for-device
+          adb shell input keyevent 82
 
       - name: Run tests
         run: npx wdio local-wdio.conf.js # Substitua com o comando para rodar seus testes
